@@ -1,7 +1,8 @@
 # Wiremock
 Using a Postman collection you can make a POST to mock urls
 
-```json
+Creating a hello.json with body
+```hello
 {
   "request": {
     "method": "GET",
