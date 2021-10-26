@@ -1,5 +1,6 @@
 # Wiremock
 Using a Postman collection you can make a POST to mock urls
+[Wiremock ADMIN API](http://wiremock.org/docs/api/)
 
 Creating a hello.json with body
 ```hello
