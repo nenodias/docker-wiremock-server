@@ -1,0 +1,128 @@
+{
+	"info": {
+		"_postman_id": "5032dc51-d76d-4e8d-908c-ce5d3cb88651",
+		"name": "Wiremock",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Getting Mappings",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/__admin/mappings",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"__admin",
+						"mappings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Mapping Example",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"request\": {\n    \"method\": \"GET\",\n    \"url\": \"/hello\"\n  },\n  \"response\": {\n    \"status\": 200,\n    \"body\": \"hello!\"\n  }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/__admin/mappings",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"__admin",
+						"mappings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put Mapping Example",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"request\": {\n    \"method\": \"GET\",\n    \"url\": \"/hello\"\n  },\n  \"response\": {\n    \"status\": 200,\n    \"body\": \"Hello World!!!\"\n  }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/__admin/mappings/2717d906-cfde-4483-8ba3-7611bdd0cc64",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"__admin",
+						"mappings",
+						"2717d906-cfde-4483-8ba3-7611bdd0cc64"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Mapping Example",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/__admin/mappings/ef329ee5-881e-4f15-8213-989716d1e522",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"__admin",
+						"mappings",
+						"ef329ee5-881e-4f15-8213-989716d1e522"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Usage Example",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/hello",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"hello"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
