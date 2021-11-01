@@ -3,9 +3,13 @@ version: '3'
 services:
   wiremock:
     image: wiremock/wiremock:latest
+    command: " --verbose --global-response-templating"
     ports:
       - '8080:8080'
       - '8443:8443'
     dns:
       - '8.8.8.8'
       - '1.1.1.1'
+    volumes:
+      - "./files:/home/wiremock/__files:rw"
+      - "./mappings:/home/wiremock/mappings:rw"

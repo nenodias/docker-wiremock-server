@@ -55,6 +55,93 @@
 			"response": []
 		},
 		{
+			"name": "Post Mapping Exemplo By Path",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"request\": {\n        \"urlPath\": \"/templated\"\n    },\n    \"response\": {\n        \"body\": \"{{request.path.[0]}}\",\n        \"transformers\": [\"response-template\"],\n        \"transformerParameters\" : {\n            \"MyCustomParameter\" : \"Parameter Value\"\n        }\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/__admin/mappings",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"__admin",
+						"mappings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Mapping Exemplo By Json",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"request\": {\n        \"urlPath\": \"/byJson\",\n        \"method\":\"POST\"\n    },\n    \"response\": {\n        \"body\": \"{\\\"name\\\":\\\"{{lookup (parseJson request.body) 'name'}}\\\", \\\"date\\\":\\\"{{now}}\\\", \\\"random\\\":\\\"{{randomValue length=33 type='ALPHANUMERIC'}}\\\"}\",\n        \"transformers\": [\"response-template\"],\n        \"headers\": {\n          \"Content-Type\": \"application/json;charset=UTF-8\"\n        }\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/__admin/mappings",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"__admin",
+						"mappings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Mapping Exemplo By XML",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"request\": {\n        \"urlPath\": \"/byXML\",\n        \"method\":\"POST\"\n    },\n    \"response\": {\n        \"body\": \"<soap:Envelope xmlns:soap=\\\"http://www.w3.org/2003/05/soap-envelope/\\\"><soap:Body><m:a><m:test>{{soapXPath request.body '/a/test/text()'}}</m:test></m:a></soap:Body></soap:Envelope>\",\n        \"transformers\": [\"response-template\"],\n        \"headers\": {\n          \"Content-Type\": \"application/xml;charset=UTF-8\"\n        }\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/__admin/mappings",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"__admin",
+						"mappings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Put Mapping Example",
 			"request": {
 				"method": "PUT",
@@ -90,7 +177,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/__admin/mappings/ef329ee5-881e-4f15-8213-989716d1e522",
+					"raw": "http://localhost:8080/__admin/mappings/2aee3895-5e3a-45e1-aac1-0bff76c717cd",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -99,7 +186,7 @@
 					"path": [
 						"__admin",
 						"mappings",
-						"ef329ee5-881e-4f15-8213-989716d1e522"
+						"2aee3895-5e3a-45e1-aac1-0bff76c717cd"
 					]
 				}
 			},
@@ -119,6 +206,121 @@
 					"port": "8080",
 					"path": [
 						"hello"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Health Check",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Joe XTes\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/health.json",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"health.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Usage Example Post By Path",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Joe XTes\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/templated",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"templated"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Usage Example Post By Json",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Xubiru\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/byJson",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"byJson"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Usage Example Post By XML",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "<soap:Envelope xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope/\">\n    <soap:Body>\n        <m:a>\n            <m:test>Ricardo</m:test>\n        </m:a>\n    </soap:Body>\n</soap:Envelope>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/byXML",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"byXML"
 					]
 				}
 			},
